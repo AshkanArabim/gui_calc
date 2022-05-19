@@ -22,6 +22,11 @@ function chsign(a) {
   return -a;
 }
 
+function logger() {
+  let display = document.querySelector(".display");
+  display.textContent = "hello";
+}
+
 const btnFuncs = {
   clear() {
     console.log("clear");
@@ -48,19 +53,19 @@ const btnFuncs = {
     console.log("divide");
   },
   n4() {
-    console.log("number 9");
+    console.log("number 4");
   },
   n5() {
     console.log("number 5");
   },
   n6() {
-    console.log("number 9");
+    console.log("number 6");
   },
   multiply() {
     console.log("multiply");
   },
   n1() {
-    console.log("number 9");
+    console.log("number 1");
   },
   n2() {
     console.log("number 2");
