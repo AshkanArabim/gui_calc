@@ -21,3 +21,11 @@ function sqrt(a) {
 function chsign(a) {
   return -a;
 }
+
+// function operator() {
+
+// }
+
+// function keylogger() {
+
+// }

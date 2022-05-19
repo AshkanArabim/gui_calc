@@ -16,6 +16,9 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
+  background-color: #777;
+  gap: 1px;
+  border-top: 1px solid #777;
 }
 
 .display {
@@ -39,4 +42,20 @@ h3 {
   align-items: center;
   justify-content: flex-end;
   padding: 10px;
+}
+
+button {
+  border: 0;
+}
+
+.numbtn {
+  background-color: #ddd;
+}
+
+.func {
+  background-color: #aaa;
+}
+
+.clear {
+  background-color: orange;
 }
