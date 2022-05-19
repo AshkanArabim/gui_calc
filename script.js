@@ -22,9 +22,9 @@ function chsign(a) {
   return -a;
 }
 
-function logger() {
+function logger(text) {
   let display = document.querySelector(".display");
-  display.textContent = "hello";
+  display.textContent = text;
 }
 
 const btnFuncs = {
