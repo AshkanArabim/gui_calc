@@ -88,5 +88,5 @@ const btnFuncs = {
 const btns = new Array(...document.querySelectorAll(".btns button"));
 
 for (let x in btns) {
-  btns[x].addEventListener("click", btnFuncs[x]);
+  btns[x].addEventListener("click", btnFuncs[btns[x].id]);
 }
