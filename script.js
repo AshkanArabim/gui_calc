@@ -39,7 +39,9 @@ const btnFuncs = {
     funcBtn = undefined;
   },
   back() {
-    console.log("back");
+    console.log("backspace");
+    let varText = String(currentVar);
+    currentVar = Number(varText.substring(0, varText.length - 1));
   },
   chsign() {
     console.log("change sign");
