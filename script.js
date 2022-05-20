@@ -68,9 +68,11 @@ const btnFuncs = {
     funcBtn = addition;
   },
   operate() {
+    if (funcBtn === undefined) return;
     console.log("operator");
     currentVar = funcBtn(prevVar, currentVar);
-    prevVar = 0
+    prevVar = 0;
+    funcBtn = undefined;
   },
   decim() {
     console.log("decimal point");
