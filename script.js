@@ -29,10 +29,14 @@ function logger(text) {
 
 let prevVar = 0; //value 1
 let currentVar = 0; //changing variable
+let funcBtn;
 
 const btnFuncs = {
   clear() {
     console.log("clear");
+    prevVar = 0;
+    currentVar = 0;
+    funcBtn = undefined;
   },
   back() {
     console.log("back");
@@ -114,24 +118,24 @@ for (let x in btns) {
 
 /* 
 numberfunc:
-  stores to b
+  stores to currentValue
   add number as first digit (using concat)
   new num stored in memo
   call logger()
 
 funcfunc:
-  a = b(first variable)
-  b = 0
+  prevVar = currentVar(first variable)
+  currentVar = 0
   save function to be called later
 
 numberfunc:
-  stores to b
+  stores to currentVar
   add number as first digit
   new num stored in mem
   call logger()
 
 operfunc:
-  calls saved functin, passes a and b respectively
-  stores returned value to b
+  calls saved functin, passes prevVar and currentVar respectively
+  stores returned value to currentVar
   call logger()
 */
