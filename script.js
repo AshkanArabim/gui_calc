@@ -1,25 +1,17 @@
-function add(a, b) {
+function addition(a, b) {
   return a + b;
 }
 
-function sub(a, b) {
+function subtraction(a, b) {
   return a - b;
 }
 
-function multiply(a, b) {
+function multiplication(a, b) {
   return a * b;
 }
 
-function divide(a, b) {
+function division(a, b) {
   return a / b;
-}
-
-function sqrt(a) {
-  return a ** 0.5;
-}
-
-function chsign(a) {
-  return -a;
 }
 
 function logger(text) {
@@ -53,18 +45,32 @@ const btnFuncs = {
   },
   divide() {
     console.log("divide");
+    prevVar = currentVar;
+    currentVar = 0;
+    funcBtn = division;
   },
   multiply() {
     console.log("multiply");
+    prevVar = currentVar;
+    currentVar = 0;
+    funcBtn = multiplication;
   },
   subtract() {
     console.log("subtract");
+    prevVar = currentVar;
+    currentVar = 0;
+    funcBtn = subtraction;
   },
   add() {
     console.log("add");
+    prevVar = currentVar;
+    currentVar = 0;
+    funcBtn = addition;
   },
   operate() {
     console.log("operator");
+    currentVar = funcBtn(prevVar, currentVar);
+    prevVar = 0
   },
   decim() {
     console.log("decimal point");
