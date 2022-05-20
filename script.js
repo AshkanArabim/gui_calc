@@ -63,34 +63,43 @@ const btnFuncs = {
   },
   n9() {
     console.log("number 9");
+    currentVar = Number(`${currentVar}${9}`);
   },
   n8() {
     console.log("number 8");
+    currentVar = Number(`${currentVar}${8}`);
   },
   n7() {
     console.log("number 7");
-    currentVar = Number(String(currentVar) + "7");
+    currentVar = Number(`${currentVar}${7}`);
   },
   n6() {
     console.log("number 6");
+    currentVar = Number(`${currentVar}${6}`);
   },
   n5() {
     console.log("number 5");
+    currentVar = Number(`${currentVar}${5}`);
   },
   n4() {
     console.log("number 4");
+    currentVar = Number(`${currentVar}${4}`);
   },
   n3() {
     console.log("number 3");
+    currentVar = Number(`${currentVar}${3}`);
   },
   n2() {
     console.log("number 2");
+    currentVar = Number(`${currentVar}${2}`);
   },
   n1() {
     console.log("number 1");
+    currentVar = Number(`${currentVar}${1}`);
   },
   n0() {
     console.log("number 0");
+    currentVar = Number(`${currentVar}${0}`);
   },
 };
 
