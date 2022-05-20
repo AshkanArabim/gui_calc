@@ -27,6 +27,9 @@ function logger(text) {
   display.textContent = text;
 }
 
+let prevVar = 0; //value 1
+let currentVar = 0; //changing variable
+
 const btnFuncs = {
   clear() {
     console.log("clear");
@@ -40,58 +43,86 @@ const btnFuncs = {
   rad() {
     console.log("sqaure root");
   },
-  n7() {
-    console.log("number 7");
-  },
-  n8() {
-    console.log("number 8");
-  },
-  n9() {
-    console.log("number 9");
-  },
   divide() {
     console.log("divide");
-  },
-  n4() {
-    console.log("number 4");
-  },
-  n5() {
-    console.log("number 5");
-  },
-  n6() {
-    console.log("number 6");
   },
   multiply() {
     console.log("multiply");
   },
-  n1() {
-    console.log("number 1");
-  },
-  n2() {
-    console.log("number 2");
-  },
-  n3() {
-    console.log("number 3");
-  },
   subtract() {
     console.log("subtract");
   },
-  n0() {
-    console.log("number 0");
-  },
-  decim() {
-    console.log("decimal point");
+  add() {
+    console.log("add");
   },
   operate() {
     console.log("operator");
   },
-  add() {
-    console.log("add");
+  decim() {
+    console.log("decimal point");
+  },
+  n9() {
+    console.log("number 9");
+  },
+  n8() {
+    console.log("number 8");
+  },
+  n7() {
+    console.log("number 7");
+    currentVar = Number(String(currentVar) + "7");
+  },
+  n6() {
+    console.log("number 6");
+  },
+  n5() {
+    console.log("number 5");
+  },
+  n4() {
+    console.log("number 4");
+  },
+  n3() {
+    console.log("number 3");
+  },
+  n2() {
+    console.log("number 2");
+  },
+  n1() {
+    console.log("number 1");
+  },
+  n0() {
+    console.log("number 0");
   },
 };
 
 const btns = new Array(...document.querySelectorAll(".btns button"));
 
 for (let x in btns) {
-  btns[x].addEventListener("click", btnFuncs[btns[x].id]);
+  btns[x].addEventListener("click", () => {
+    btnFuncs[btns[x].id]();
+    logger(currentVar);
+  });
 }
+
+/* 
+numberfunc:
+  stores to b
+  add number as first digit (using concat)
+  new num stored in memo
+  call logger()
+
+funcfunc:
+  a = b(first variable)
+  b = 0
+  save function to be called later
+
+numberfunc:
+  stores to b
+  add number as first digit
+  new num stored in mem
+  call logger()
+
+operfunc:
+  calls saved functin, passes a and b respectively
+  stores returned value to b
+  call logger()
+*/

@@ -11,6 +11,19 @@ body {
   margin: 0;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 200px;
+  height: 300px;
+}
+
+.display {
+  background-color: white;
+  flex: 0 0 1;
+}
+
 .btns {
   flex: 1 1 auto;
   display: grid;
@@ -32,19 +45,6 @@ body {
 .btns button:active {
   background-color: black;
   color: white;
-}
-
-.display {
-  background-color: white;
-  flex: 0 0 1;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  width: 200px;
-  height: 300px;
 }
 
 h3 {
