@@ -30,6 +30,7 @@ function logger(text) {
 let prevVar = 0; //value 1
 let currentVar = 0; //changing variable
 let funcBtn;
+let decimCounter = 0;
 
 const btnFuncs = {
   clear() {
@@ -67,6 +68,9 @@ const btnFuncs = {
   },
   decim() {
     console.log("decimal point");
+    if (decimCounter >= 1) return;
+    currentVar = `${currentVar}.`;
+    decimCounter++;
   },
   n9() {
     console.log("number 9");
