@@ -50,6 +50,7 @@ const btnFuncs = {
   },
   rad() {
     console.log("sqaure root");
+    currentVar = currentVar ** 0.5;
   },
   divide() {
     console.log("divide");
@@ -119,6 +120,7 @@ const btns = new Array(...document.querySelectorAll(".btns button"));
 for (let x in btns) {
   btns[x].addEventListener("click", () => {
     btnFuncs[btns[x].id]();
+    currentVar = Number(`${currentVar}`.substring(0, 10));
     logger(currentVar);
   });
 }
