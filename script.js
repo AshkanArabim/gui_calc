@@ -1,6 +1,6 @@
 /* 
 to do:
-  fix 2+2+2+2+2
+  fix 2+2+2+2+2 not showind prevVar
   highlight operators when selected
   fix 2*2*2*2*2
 */
@@ -23,19 +23,20 @@ function division(a, b) {
 
 function logger(text) {
   let display = document.querySelector(".display");
-  display.textContent = text;
+  display.textContent = String(text).substring(0, 10);
 }
 
-let prevVar = 0; //value 1
-let currentVar = 0; //changing variable
+let prevVar; //value 1
+let currentVar; //changing variable
 let funcBtn;
 
 const btnFuncs = {
   clear() {
     console.log("clear");
-    prevVar = 0;
-    currentVar = 0;
+    prevVar = undefined;
+    currentVar = undefined;
     funcBtn = undefined;
+    logger(0);
   },
   back() {
     console.log("backspace");
@@ -45,86 +46,136 @@ const btnFuncs = {
   chsign() {
     console.log("change sign");
     currentVar = -currentVar;
+    logger(currentVar);
   },
-  rad() {
-    console.log("sqaure root");
-    currentVar = currentVar ** 0.5;
+  // rad() {
+  //   console.log("sqaure root");
+  //   if (currentVar) {
+  //     currentVar = currentVar ** 0.5;
+  //   } else if (prevVar) {
+  //     currentVar = prevVar ** 0.5;
+  //     prevVar = undefined;
+  //   }
+  //   logger(currentVar);
+  // },
+  power() {
+    console.log("power");
+    if (funcBtn) this.operate();
+    if (prevVar === undefined) {
+      prevVar = currentVar;
+      currentVar = undefined;
+    }
+    funcBtn = division;
   },
   divide() {
     console.log("divide");
-    prevVar = currentVar;
-    currentVar = 0;
+    if (funcBtn) this.operate();
+    if (prevVar === undefined) {
+      prevVar = currentVar;
+      currentVar = undefined;
+    }
     funcBtn = division;
   },
   multiply() {
     console.log("multiply");
-    prevVar = currentVar;
-    currentVar = 0;
+    if (funcBtn) this.operate();
+    if (prevVar === undefined) {
+      prevVar = currentVar;
+      currentVar = undefined;
+    }
     funcBtn = multiplication;
   },
   subtract() {
     console.log("subtract");
-    prevVar = currentVar;
-    currentVar = 0;
+    if (funcBtn) this.operate();
+    if (prevVar === undefined) {
+      prevVar = currentVar;
+      currentVar = undefined;
+    }
     funcBtn = subtraction;
   },
   add() {
     console.log("add");
-    prevVar = currentVar;
-    currentVar = 0;
+    if (funcBtn) this.operate();
+    if (prevVar === undefined) {
+      prevVar = currentVar;
+      currentVar = undefined;
+    }
     funcBtn = addition;
   },
   operate() {
-    if (funcBtn === undefined) return;
     console.log("operator");
-    currentVar = funcBtn(prevVar, currentVar);
-    prevVar = 0;
+    if (funcBtn === undefined) return;
+    prevVar = funcBtn(prevVar, currentVar);
+    currentVar = undefined;
     funcBtn = undefined;
+    logger(prevVar);
   },
   decim() {
     console.log("decimal point");
     if (`${currentVar}`.search(/\./) !== -1) return;
     currentVar = `${currentVar}.`;
+    logger(currentVar);
   },
   n9() {
+    if (currentVar === undefined) currentVar = 0;
     console.log("number 9");
     currentVar = Number(`${currentVar}${9}`);
+    logger(currentVar);
   },
   n8() {
+    if (currentVar === undefined) currentVar = 0;
     console.log("number 8");
     currentVar = Number(`${currentVar}${8}`);
+    logger(currentVar);
   },
   n7() {
+    if (currentVar === undefined) currentVar = 0;
     console.log("number 7");
     currentVar = Number(`${currentVar}${7}`);
+    logger(currentVar);
   },
   n6() {
+    if (currentVar === undefined) currentVar = 0;
     console.log("number 6");
     currentVar = Number(`${currentVar}${6}`);
+    logger(currentVar);
   },
   n5() {
+    if (currentVar === undefined) currentVar = 0;
     console.log("number 5");
     currentVar = Number(`${currentVar}${5}`);
+    logger(currentVar);
   },
   n4() {
+    if (currentVar === undefined) currentVar = 0;
     console.log("number 4");
     currentVar = Number(`${currentVar}${4}`);
+    logger(currentVar);
   },
   n3() {
+    if (currentVar === undefined) currentVar = 0;
     console.log("number 3");
     currentVar = Number(`${currentVar}${3}`);
+    logger(currentVar);
   },
   n2() {
+    if (currentVar === undefined) currentVar = 0;
     console.log("number 2");
     currentVar = Number(`${currentVar}${2}`);
+    logger(currentVar);
   },
   n1() {
+    if (currentVar === undefined) currentVar = 0;
     console.log("number 1");
     currentVar = Number(`${currentVar}${1}`);
+    logger(currentVar);
   },
   n0() {
+    if (currentVar === undefined) currentVar = 0;
     console.log("number 0");
     currentVar = Number(`${currentVar}${0}`);
+    logger(currentVar);
   },
 };
 
@@ -133,9 +184,5 @@ const btns = new Array(...document.querySelectorAll(".btns button"));
 for (let x in btns) {
   btns[x].addEventListener("click", () => {
     btnFuncs[btns[x].id]();
-    // currentVar = Number(`${currentVar}`.substring(0, 10));
-    if (`${currentVar}`.length > 10)
-      currentVar = Number(`${currentVar}`.substring(0, 10));
-    logger(currentVar);
   });
 }
