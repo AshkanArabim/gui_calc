@@ -1,24 +1,22 @@
 /* 
 to do:
-  fix 2+2+2+2+2 not showind prevVar
   highlight operators when selected
-  fix 2*2*2*2*2
 */
 
 function addition(a, b) {
   return a + b;
 }
-
 function subtraction(a, b) {
   return a - b;
 }
-
 function multiplication(a, b) {
   return a * b;
 }
-
 function division(a, b) {
   return a / b;
+}
+function exponent(a, b) {
+  return a ** b;
 }
 
 function logger(text) {
@@ -48,16 +46,6 @@ const btnFuncs = {
     currentVar = -currentVar;
     logger(currentVar);
   },
-  // rad() {
-  //   console.log("sqaure root");
-  //   if (currentVar) {
-  //     currentVar = currentVar ** 0.5;
-  //   } else if (prevVar) {
-  //     currentVar = prevVar ** 0.5;
-  //     prevVar = undefined;
-  //   }
-  //   logger(currentVar);
-  // },
   power() {
     console.log("power");
     if (funcBtn) this.operate();
@@ -65,7 +53,7 @@ const btnFuncs = {
       prevVar = currentVar;
       currentVar = undefined;
     }
-    funcBtn = division;
+    funcBtn = exponent;
   },
   divide() {
     console.log("divide");
