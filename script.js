@@ -43,6 +43,7 @@ const btnFuncs = {
   },
   chsign() {
     console.log("change sign");
+    currentVar = -currentVar;
   },
   rad() {
     console.log("sqaure root");
