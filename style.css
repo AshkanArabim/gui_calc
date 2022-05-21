@@ -14,14 +14,13 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  width: 200px;
-  height: 300px;
-}
-
-.display {
-  background-color: white;
-  flex: 0 0 1;
+  background-color: black;
+  padding: 10px;
+  box-shadow: #444 0px 0px 50px;
+  width: 400px;
+  height: 600px;
+  font-size: 30px;
+  border-radius: 5px;
 }
 
 .btns {
@@ -29,13 +28,15 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  background-color: black;
-  gap: 1px;
-  border-top: 1px solid black;
+  gap: 5px;
+  padding-top: 10px;
 }
 
 .btns button {
   transition: 250ms;
+  font-size: 30px;
+  border: 0;
+  border-radius: 5px;
 }
 
 .btns button:hover {
@@ -47,18 +48,21 @@ body {
   color: white;
 }
 
-h3 {
+.display {
+  background-color: #444;
+  box-shadow: #222 0px 5px 5px inset;
+  color: green;
+  flex: 0 0 1;
+  height: 100px;
+  font-family: "Courier New", Courier, monospace;
   margin: 0;
-  height: 50px;
-  font-size: 30px;
+  font-size: 57px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 10px;
-}
-
-button {
-  border: 0;
+  padding: 40px 20px 30px 20px;
+  border-radius: 5px;
+  text-shadow: #222 0px 2px 5px;
 }
 
 .numbtn {

@@ -1,6 +1,8 @@
 function logger(text) {
+  text = String(text);
+  if (text === "NaN") text = "Error";
   let display = document.querySelector(".display");
-  display.textContent = String(text).substring(0, 10);
+  display.textContent = text.substring(0, 10);
 }
 
 let prevVar;
@@ -43,15 +45,6 @@ const btnFuncs = {
     currentVar = -currentVar;
     logger(currentVar);
   },
-  f(type) {
-    console.log(type);
-    if (funcBtn) this.operate();
-    if (prevVar === undefined) {
-      prevVar = currentVar;
-      currentVar = undefined;
-    }
-    funcBtn = this[type];
-  },
   operate() {
     console.log("operator");
     if (funcBtn === undefined) return;
@@ -65,6 +58,15 @@ const btnFuncs = {
     if (`${currentVar}`.search(/\./) !== -1) return;
     currentVar = `${currentVar}.`;
     logger(currentVar);
+  },
+  f(type) {
+    console.log(type);
+    if (funcBtn) this.operate();
+    if (prevVar === undefined) {
+      prevVar = currentVar;
+      currentVar = undefined;
+    }
+    funcBtn = this[type];
   },
   n(num) {
     if (currentVar === undefined) currentVar = 0;
