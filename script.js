@@ -24,8 +24,8 @@ function logger(text) {
   display.textContent = String(text).substring(0, 10);
 }
 
-let prevVar; //value 1
-let currentVar; //changing variable
+let prevVar;
+let currentVar;
 let funcBtn;
 
 const btnFuncs = {
@@ -40,6 +40,7 @@ const btnFuncs = {
     console.log("backspace");
     let varText = String(currentVar);
     currentVar = Number(varText.substring(0, varText.length - 1));
+    logger(currentVar);
   },
   chsign() {
     console.log("change sign");
@@ -105,64 +106,11 @@ const btnFuncs = {
     currentVar = `${currentVar}.`;
     logger(currentVar);
   },
-  n9() {
+  //utils
+  n(num) {
     if (currentVar === undefined) currentVar = 0;
-    console.log("number 9");
-    currentVar = Number(`${currentVar}${9}`);
-    logger(currentVar);
-  },
-  n8() {
-    if (currentVar === undefined) currentVar = 0;
-    console.log("number 8");
-    currentVar = Number(`${currentVar}${8}`);
-    logger(currentVar);
-  },
-  n7() {
-    if (currentVar === undefined) currentVar = 0;
-    console.log("number 7");
-    currentVar = Number(`${currentVar}${7}`);
-    logger(currentVar);
-  },
-  n6() {
-    if (currentVar === undefined) currentVar = 0;
-    console.log("number 6");
-    currentVar = Number(`${currentVar}${6}`);
-    logger(currentVar);
-  },
-  n5() {
-    if (currentVar === undefined) currentVar = 0;
-    console.log("number 5");
-    currentVar = Number(`${currentVar}${5}`);
-    logger(currentVar);
-  },
-  n4() {
-    if (currentVar === undefined) currentVar = 0;
-    console.log("number 4");
-    currentVar = Number(`${currentVar}${4}`);
-    logger(currentVar);
-  },
-  n3() {
-    if (currentVar === undefined) currentVar = 0;
-    console.log("number 3");
-    currentVar = Number(`${currentVar}${3}`);
-    logger(currentVar);
-  },
-  n2() {
-    if (currentVar === undefined) currentVar = 0;
-    console.log("number 2");
-    currentVar = Number(`${currentVar}${2}`);
-    logger(currentVar);
-  },
-  n1() {
-    if (currentVar === undefined) currentVar = 0;
-    console.log("number 1");
-    currentVar = Number(`${currentVar}${1}`);
-    logger(currentVar);
-  },
-  n0() {
-    if (currentVar === undefined) currentVar = 0;
-    console.log("number 0");
-    currentVar = Number(`${currentVar}${0}`);
+    console.log(`number ${num}`);
+    currentVar = Number(`${currentVar}${num}`);
     logger(currentVar);
   },
 };
@@ -170,7 +118,17 @@ const btnFuncs = {
 const btns = new Array(...document.querySelectorAll(".btns button"));
 
 for (let x in btns) {
-  btns[x].addEventListener("click", () => {
-    btnFuncs[btns[x].id]();
-  });
+  if (btns[x].id.search(/n[0-9]/) === 0) {
+    btns[x].addEventListener("click", () => {
+      btnFuncs[`n`](btns[x].id[1]);
+    });
+  } else {
+    btns[x].addEventListener("click", () => {
+      btnFuncs[btns[x].id]();
+    });
+  }
+
+  // btns[x].addEventListener("click", () => {
+  //   btnFuncs[btns[x].id]();
+  // });
 }
