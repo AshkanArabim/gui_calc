@@ -1,24 +1,3 @@
-/* 
-to do:
-  highlight operators when selected
-*/
-
-function addition(a, b) {
-  return a + b;
-}
-function subtraction(a, b) {
-  return a - b;
-}
-function multiplication(a, b) {
-  return a * b;
-}
-function division(a, b) {
-  return a / b;
-}
-function exponent(a, b) {
-  return a ** b;
-}
-
 function logger(text) {
   let display = document.querySelector(".display");
   display.textContent = String(text).substring(0, 10);
@@ -28,7 +7,24 @@ let prevVar;
 let currentVar;
 let funcBtn;
 
+const btns = new Array(...document.querySelectorAll(".btns button"));
+
 const btnFuncs = {
+  add(a, b) {
+    return a + b;
+  },
+  subtract(a, b) {
+    return a - b;
+  },
+  multiply(a, b) {
+    return a * b;
+  },
+  divide(a, b) {
+    return a / b;
+  },
+  power(a, b) {
+    return a ** b;
+  },
   clear() {
     console.log("clear");
     prevVar = undefined;
@@ -47,50 +43,14 @@ const btnFuncs = {
     currentVar = -currentVar;
     logger(currentVar);
   },
-  power() {
-    console.log("power");
+  f(type) {
+    console.log(type);
     if (funcBtn) this.operate();
     if (prevVar === undefined) {
       prevVar = currentVar;
       currentVar = undefined;
     }
-    funcBtn = exponent;
-  },
-  divide() {
-    console.log("divide");
-    if (funcBtn) this.operate();
-    if (prevVar === undefined) {
-      prevVar = currentVar;
-      currentVar = undefined;
-    }
-    funcBtn = division;
-  },
-  multiply() {
-    console.log("multiply");
-    if (funcBtn) this.operate();
-    if (prevVar === undefined) {
-      prevVar = currentVar;
-      currentVar = undefined;
-    }
-    funcBtn = multiplication;
-  },
-  subtract() {
-    console.log("subtract");
-    if (funcBtn) this.operate();
-    if (prevVar === undefined) {
-      prevVar = currentVar;
-      currentVar = undefined;
-    }
-    funcBtn = subtraction;
-  },
-  add() {
-    console.log("add");
-    if (funcBtn) this.operate();
-    if (prevVar === undefined) {
-      prevVar = currentVar;
-      currentVar = undefined;
-    }
-    funcBtn = addition;
+    funcBtn = this[type];
   },
   operate() {
     console.log("operator");
@@ -106,7 +66,6 @@ const btnFuncs = {
     currentVar = `${currentVar}.`;
     logger(currentVar);
   },
-  //utils
   n(num) {
     if (currentVar === undefined) currentVar = 0;
     console.log(`number ${num}`);
@@ -115,20 +74,18 @@ const btnFuncs = {
   },
 };
 
-const btns = new Array(...document.querySelectorAll(".btns button"));
-
 for (let x in btns) {
   if (btns[x].id.search(/n[0-9]/) === 0) {
     btns[x].addEventListener("click", () => {
-      btnFuncs[`n`](btns[x].id[1]);
+      btnFuncs["n"](btns[x].id[1]);
+    });
+  } else if (btns[x].id.search("f-") === 0) {
+    btns[x].addEventListener("click", () => {
+      btnFuncs["f"](btns[x].id.substring(2));
     });
   } else {
     btns[x].addEventListener("click", () => {
       btnFuncs[btns[x].id]();
     });
   }
-
-  // btns[x].addEventListener("click", () => {
-  //   btnFuncs[btns[x].id]();
-  // });
 }
