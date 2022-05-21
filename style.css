@@ -2,8 +2,19 @@
   box-sizing: border-box;
 }
 
-body {
+.container,
+.btns button,
+.display {
+  border-radius: 5px;
+}
+
+body,
+.container,
+.display {
   display: flex;
+}
+
+body {
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -12,7 +23,6 @@ body {
 }
 
 .container {
-  display: flex;
   flex-direction: column;
   background-color: black;
   padding: 10px;
@@ -20,7 +30,6 @@ body {
   width: 400px;
   height: 600px;
   font-size: 30px;
-  border-radius: 5px;
 }
 
 .btns {
@@ -36,7 +45,6 @@ body {
   transition: 250ms;
   font-size: 30px;
   border: 0;
-  border-radius: 5px;
 }
 
 .btns button:hover {
@@ -45,6 +53,11 @@ body {
 
 .btns button:active {
   background-color: black;
+  color: white;
+}
+
+.active {
+  background-color: black !important;
   color: white;
 }
 
@@ -57,11 +70,9 @@ body {
   font-family: "Courier New", Courier, monospace;
   margin: 0;
   font-size: 57px;
-  display: flex;
   align-items: center;
   justify-content: flex-end;
   padding: 40px 20px 30px 20px;
-  border-radius: 5px;
   text-shadow: #222 0px 2px 5px;
 }
 

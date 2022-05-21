@@ -91,3 +91,22 @@ for (let x in btns) {
     });
   }
 }
+
+document.addEventListener("keydown", (e) => {
+  let btn = document.querySelector(`button[data-key="${e.key}"`);
+  console.log(e.key);
+  if (!btn) return;
+  btn.classList.add("active");
+  if (btn.id.search(/n[0-9]/) === 0) {
+    btnFuncs["n"](btn.id[1]);
+  } else if (btn.id.search("f-") === 0) {
+    btnFuncs["f"](btn.id.substring(2));
+  } else {
+    btnFuncs[btn.id]();
+  }
+});
+document.addEventListener("keyup", (e) => {
+  let btn = document.querySelector(`button[data-key="${e.key}"`);
+  if (!btn) return;
+  btn.classList.remove("active");
+});
